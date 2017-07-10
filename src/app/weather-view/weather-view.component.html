@@ -1,0 +1,32 @@
+
+<div *ngIf="weatherInfo" style="width : 100%">
+	<!-- title -->
+	<h3>
+		{{weatherInfo.title}}
+	</h3>
+
+	<!-- 説明 -->
+	<p>
+		{{weatherInfo.description.text}}
+	</p>
+	<p>
+		{{weatherInfo.description.publicTime}}
+	</p>
+
+	<!-- 今日の天気 -->
+	<div style="width:30%; float:left; padding-left : 3%" *ngFor="let weather of weatherInfo.forecasts">
+		<h3>
+			{{weather.dateLabel}}({{weather.date}})
+		</h3>
+		<img [src]="weather.image.url" style="width : {{weather.image.width}}; hight: {{weather.image.hight}}" /> {{weather.telop}}
+		<div *ngIf="weather.temperature.max">
+			<span style="color : red">{{weather.temperature.max.celsius}}</span>/<span style="color : blue">{{weather.temperature.min.celsius}}</span>
+		</div>
+	</div>
+
+	<!-- コピーライト -->
+	<footer>
+		{{weatherInfo.copyright.title}}
+		<a [href]="weatherInfo.copyright.provider[0].link">{{weatherInfo.copyright.provider[0].name}}</a>
+	</footer>
+</div>

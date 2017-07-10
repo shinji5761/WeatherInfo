@@ -1,0 +1,8 @@
+<!-- InputForm -->
+<div class="input-form">
+	都市を選択してください :
+	<select [(ngModel)]="selected_city" (change)="changeSelectedCity()">
+		<option value="">Pleases Select</option>
+		<option *ngFor="let city of city_list" [value]="city.id">{{city.name}}</option>
+	</select>
+</div>
